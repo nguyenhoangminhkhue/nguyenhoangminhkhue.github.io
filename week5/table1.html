@@ -5,22 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Fundamentals Exam Result</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
         table {
-            width: 50%;
+            width: 70%;
             border-collapse: collapse;
-            margin: 20px auto;
+            margin: 50px auto;
             text-align: center;
+            border: 3px solid black; /* Đường viền chính bao quanh bảng */
         }
         th, td {
-            border: 1px solid black;
+            border: 1px solid black; /* Đường viền giữa các ô */
             padding: 10px;
         }
-        thead {
-            background-color: #f2f2f2;
+        th {
+            background-color: #e0e0e0; /* Màu xám nhạt cho các ô tiêu đề */
+            font-weight: bold;
+            border: 2px solid black; /* Đường viền nổi bật hơn cho ô tiêu đề */
+        }
+        td {
+            background-color: #ffffff;
+        }
+        thead tr:first-child th {
+            font-size: 20px;
+            background-color: #f0f0f0; /* Màu sáng hơn cho tiêu đề bảng lớn */
+            border: none;
+            padding: 15px 10px;
         }
         tfoot {
-            background-color: #f2f2f2;
+            background-color: #e0e0e0; /* Màu nền xám nhạt */
             font-weight: bold;
+        }
+        tfoot td {
+            padding: 10px;
+            text-align: center;
+            border: 2px solid black;
+        }
+        thead th {
+            width: 25%; /* Chia độ rộng các cột */
+        }
+        tbody td {
+            text-align: left; /* Canh trái nội dung các cột First Name và Last Name */
+        }
+        .average-score {
+            text-align: center;
+            font-weight: bold;
+        }
+        .centered-text {
+            text-align: center; /* Canh giữa các số thứ tự và điểm */
         }
     </style>
 </head>
@@ -28,6 +61,11 @@
 
     <table>
         <thead>
+            <!-- Hàng đầu tiên: Tiêu đề bảng lớn -->
+            <tr>
+                <th colspan="4">Web Fundamentals Exam Result</th>
+            </tr>
+            <!-- Hàng thứ hai: Tiêu đề các cột -->
             <tr>
                 <th>№</th>
                 <th>First name</th>
@@ -37,39 +75,39 @@
         </thead>
         <tbody>
             <tr>
-                <td>01</td>
+                <td class="centered-text">01</td>
                 <td>Gosho</td>
                 <td>Goshev</td>
-                <td>500</td>
+                <td class="centered-text">500</td>
             </tr>
             <tr>
-                <td>02</td>
+                <td class="centered-text">02</td>
                 <td>Tosho</td>
                 <td>Toshev</td>
-                <td>500</td>
+                <td class="centered-text">500</td>
             </tr>
             <tr>
-                <td>03</td>
+                <td class="centered-text">03</td>
                 <td>Gencho</td>
                 <td>Genchev</td>
-                <td>500</td>
+                <td class="centered-text">500</td>
             </tr>
             <tr>
-                <td>04</td>
+                <td class="centered-text">04</td>
                 <td>Draga</td>
                 <td>Draganova</td>
-                <td>500</td>
+                <td class="centered-text">500</td>
             </tr>
             <tr>
-                <td>05</td>
+                <td class="centered-text">05</td>
                 <td>Gosho</td>
                 <td>Goshev</td>
-                <td>500</td>
+                <td class="centered-text">500</td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="4">Average score from 05 participants: 500</td>
+                <td colspan="4" class="average-score">Average score from 05 participants: 500</td>
             </tr>
         </tfoot>
     </table>

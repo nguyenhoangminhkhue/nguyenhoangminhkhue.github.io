@@ -1,0 +1,39 @@
+div.items > a {
+    color: green;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+.red {
+    color: red;
+}
+
+
+p[mycustomattribute] {
+    color: green;
+}
+
+p[mycustomattribut="test"] {
+    color: orange;
+}
+
+p:hover {
+    color: green;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: green;
+}
+
+a:lịnk {
+    color: brown;
+}

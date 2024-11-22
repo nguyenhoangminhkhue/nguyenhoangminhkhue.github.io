@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+    <input type="number" id="number1" placeholder="Enter first number">
+    <input type="number" id="number2" placeholder="Enter second number">
+    <br>
+    <button onclick="calculate('+')">+</button>
+    <button onclick="calculate('-')">-</button>
+    <button onclick="calculate('*')">×</button>
+    <button onclick="calculate('/')">÷</button>
+    <div id="result"></div>
+
+    <script>
+        function calculate(operator) {
+            const num1 = document.getElementById('number1').value;
+            const num2 = document.getElementById('number2').value;
+
+            // Validation for empty inputs
+            if (num1 === '' || num2 === '') {
+                document.getElementById('result').innerText = 'Both inputs are required!';
+                return;
+            }
+
+            // Convert inputs to numbers
+            const number1 = parseFloat(num1);
+            const number2 = parseFloat(num2);
+
+            let result;
+
+            // Perform calculation based on operator
+            switch (operator) {
+                case '+':
+                    result = number1 + number2;
+                    break;
+                case '-':
+                    result = number1 - number2;
+                    break;
+                case '*':
+                    result = number1 * number2;
+                    break;
+                case '/':
+                    // Handle division by 0
+                    if (number2 === 0) {
+                        document.getElementById('result').innerText = 'Cannot divide by 0!';
+                        return;
+                    }
+                    result = number1 / number2;
+                    break;
+                default:
+                    result = 'Invalid operation!';
+            }
+
+            // Display result
+            document.getElementById('result').innerText = `Result: ${result}`;
+        }
+    </script>
+</body>
+</html>

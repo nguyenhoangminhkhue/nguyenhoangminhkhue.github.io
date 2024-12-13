@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required minlength="3">
+            <div class="error" id="usernameError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <div class="error" id="emailError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" required minlength="8">
+            <div class="error" id="passwordError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" required>
+            <div class="error" id="confirmPasswordError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number (XXX-XXX-XXXX):</label>
+            <input type="text" id="phone" required pattern="^\d{3}-\d{3}-\d{4}$">
+            <div class="error" id="phoneError"></div>
+        </div>
+
+        <button type="submit">Register</button>
+        <div class="success" id="successMessage"></div>
+    </form>
+</div>
+
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let isValid = true;
+
+        // Username validation
+        const username = document.getElementById("username");
+        const usernameError = document.getElementById("usernameError");
+        if (username.value.length < 3) {
+            usernameError.textContent = "Username must be at least 3 characters long.";
+            username.classList.add("invalid");
+            isValid = false;
+        } else {
+            usernameError.textContent = "";
+            username.classList.remove("invalid");
+        }
+
+        // Email validation
+        const email = document.getElementById("email");
+        const emailError = document.getElementById("emailError");
+        if (!email.checkValidity()) {
+            emailError.textContent = "Please enter a valid email address.";
+            email.classList.add("invalid");
+            isValid = false;
+        } else {
+            emailError.textContent = "";
+            email.classList.remove("invalid");
+        }
+
+        // Password validation
+        const password = document.getElementById("password");
+        const passwordError = document.getElementById("passwordError");
+        const passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])/;
+        if (password.value.length < 8 || !passwordPattern.test(password.value)) {
+            passwordError.textContent = "Password must be at least 8 characters long and contain at least one number and one special character.";
+            password.classList.add("invalid");
+            isValid = false;
+        } else {
+            passwordError.textContent = "";
+            password.classList.remove("invalid");
+        }
+
+        // Confirm Password validation
+        const confirmPassword = document.getElementById("confirmPassword");
+        const confirmPasswordError = document.getElementById("confirmPasswordError");
+        if (confirmPassword.value !== password.value) {
+            confirmPasswordError.textContent = "Passwords do not match.";
+            confirmPassword.classList.add("invalid");
+            isValid = false;
+        } else {
+            confirmPasswordError.textContent = "";
+            confirmPassword.classList.remove("invalid");
+        }
+
+        // Phone Number validation
+        const phone = document.getElementById("phone");
+        const phoneError = document.getElementById("phoneError");
+        const phonePattern = /^\d{3}-\d{3}-\d{4}$/;
+        if (!phonePattern.test(phone.value)) {
+            phoneError.textContent = "Please enter a valid phone number (e.g., XXX-XXX-XXXX).";
+            phone.classList.add("invalid");
+            isValid = false;
+        } else {
+            phoneError.textContent = "";
+            phone.classList.remove("invalid");
+        }
+
+        // Success message
+        const successMessage = document.getElementById("successMessage");
+        if (isValid) {
+            successMessage.textContent = "Registration successful!";
+        } else {
+            successMessage.textContent = "";
+        }
+    });
+</script>
+
+</body>
+</html>
